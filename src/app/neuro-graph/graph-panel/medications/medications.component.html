@@ -1,0 +1,123 @@
+<!-- initial height is 0, appropriate height and display will be set at runtime -->
+<svg attr.id={{medType.vitaminD}} width="100%" height="0" style="display:none"></svg>
+<svg attr.id={{medType.dmt}} width="100%" height="0" style="display:none"></svg>
+<svg attr.id={{medType.otherMeds}} width="100%" height="0" style="display:none"></svg>
+
+<template #dmtSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{medicationDetail.name}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6">Generic Name</div>
+            <div class="col-xs-6">{{medicationDetail.medication.simple_generic_name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Ordered</div>
+            <div class="col-xs-6">{{medicationDetail.date.orderDate}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">End</div>
+            <div class="col-xs-6">{{medicationDetail.date.medEnd}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Patient Reported Start</div>
+            <div class="col-xs-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Quantity</div>
+            <div class="col-xs-6">{{medicationDetail.medQuantity}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Frequency</div>
+            <div class="col-xs-6">{{medicationDetail.frequency}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6"># of Refills (Ordered/Remaining)</div>
+            <div class="col-xs-6">{{medicationDetail.refillCount}}/{{medicationDetail.refillRemain}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6"># of Relapses</div>
+            <div class="col-xs-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Reason Stopped</div>
+            <div class="col-xs-6"></div>
+        </div>
+    </div>
+</template>
+
+<template #vitaminDSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{medicationDetail.name}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6">Generic Name</div>
+            <div class="col-xs-6">{{medicationDetail.medication.simple_generic_name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Ordered</div>
+            <div class="col-xs-6">{{medicationDetail.date.orderDate}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">End</div>
+            <div class="col-xs-6">{{medicationDetail.date.medEnd}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Patient Reported Start</div>
+            <div class="col-xs-6"></div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-xs-12">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+        </div>
+    </div>
+</template>
+
+<template #otherMedsSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{medicationDetail.name}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6">Generic Name</div>
+            <div class="col-xs-6">{{medicationDetail.medication.simple_generic_name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Ordered</div>
+            <div class="col-xs-6">{{medicationDetail.date.orderDate}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">End</div>
+            <div class="col-xs-6">{{medicationDetail.date.medEnd}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Quantity</div>
+            <div class="col-xs-6">{{medicationDetail.medQuantity}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Frequency</div>
+            <div class="col-xs-6">{{medicationDetail.frequency}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6"># of Refills (Ordered/Remaining)</div>
+            <div class="col-xs-6">{{medicationDetail.refillCount}}/{{medicationDetail.refillRemain}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Reason for Med</div>
+            <div class="col-xs-6"></div>
+        </div>
+    </div>
+</template>

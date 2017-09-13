@@ -1,0 +1,78 @@
+<div class="header-area">
+  <span class="header-text">Neuro Related</span>
+</div>
+
+<table class="grouping-checkboxes">
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" [checked]="true" (change)='changed($event,"dmt")' /> DMT </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"otherMeds")' /> Other Meds </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"vitaminD")' /> Vitamin D </label></td>
+  </tr>
+  <tr>
+    <td rowspan="4" class="rotate-text">TREATMENTS</td>
+    <td><label><input type="checkbox" (change)='changed($event,"referrals")' /> Referrals </label></td>
+  </tr>
+</table>
+
+<table class="grouping-checkboxes">
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" [checked]="true" (change)='changed($event,"edss")' /> EDSS </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"walk25Feet")' /> 25' Walk </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"relapses")' /> Relapses </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"imaging")' /> Imaging </label></td>
+  </tr>
+  <tr>
+    <td rowspan="5" class="rotate-text">OUTCOMES</td>
+    <td><label><input type="checkbox" (change)='changed($event,"symptoms")' /> Symptoms </label></td>
+  </tr>
+</table>
+
+<table class="grouping-checkboxes">
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" [checked]="true" (change)='changed($event,"labs")' /> Labs </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"vaccinations")' /> Vaccinations </label></td>
+  </tr>
+  <tr>
+    <td rowspan="3" class="rotate-text">MONITORING</td>
+    <td><label><input type="checkbox" (change)='changed($event,"dme")' /> DME </label></td>
+  </tr>
+</table>
+
+<table class="grouping-checkboxes">
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"office")' /> Office </label></td>
+  </tr>
+  <tr>
+    <td class="rotate-text"></td>
+    <td><label><input type="checkbox" (change)='changed($event,"mho")' /> MHO </label></td>
+  </tr>
+  <tr>
+    <td rowspan="3" class="rotate-text">ENCOUNTERS</td>
+    <td><label><input type="checkbox" (change)='changed($event,"phone")' /> Phone </label></td>
+  </tr>
+</table>
+<!-- <p-dialog header="Title" [(visible)]="display">
+  Content
+</p-dialog> -->

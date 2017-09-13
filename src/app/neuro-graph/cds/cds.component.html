@@ -1,0 +1,70 @@
+<div class="header-area">
+  <span class="header-text">Neuro Related Care</span>
+  <input class="header-button" type="image" src="../../assets/images/nav-up-second.PNG" (click)="buttonclicked('book')" width="35"
+    height="35">
+</div>
+<br />
+<table class="review-area">
+  <tr>
+    <td  class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.relapses.checked' /> Review relapses </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" 
+      [popover]="cdsState.relapses.info" 
+      [popoverTitle]="cdsState.relapses.title"
+      triggers="focus" placement="left" container="body"
+      width="20px" height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.imaging.checked' /> Review MRI images </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoMri')" width="20px" height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.symptomStatus.checked' /> Review symptom status </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoSymptom')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.typeStatus.checked' /> Review MS type/status </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoMsType')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.dmt.checked' /> Review DMTs </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoDMT')" width="20px" height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.labs.checked'  /> Review monitoring labs </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoMonitoringLabs')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.vitaminD.checked'  /> Review Vitamin D </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoVitaminD')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.otherMeds.checked'  /> Review other related meds </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoOtherMeds')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.referrals.checked' /> Review symptoms referrals </label></td>
+    <td class="info-image"><input type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoSymptomsReferrals')" width="20px"
+        height="20px"></td>
+  </tr>
+  <tr>
+    <td class="review-checkbox"><label><input type="checkbox" [(ngModel)]='cdsState.vaccinations.checked' /> Review vaccinations </label></td>
+    <td class="info-image">
+      <input type="image" src="../../assets/images/information-icon.png" (click)="buttonClicked('vaccinations')" width="20px" height="20px">
+      <!-- <button type="button" class="btn btn-outline-secondary" placement="top" ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        popoverTitle="Popover on top">
+        Popover on top
+      </button> -->
+    </td>
+  </tr>
+</table>
+<!-- <p-dialog [header]="header" [(visible)]="display" dismissableMask="false" closable='true' width="300">
+  Content
+</p-dialog> -->
+<!-- <p-overlayPanel #op [showCloseIcon]="true" [dismissable]="false">
+  Content
+</p-overlayPanel> -->

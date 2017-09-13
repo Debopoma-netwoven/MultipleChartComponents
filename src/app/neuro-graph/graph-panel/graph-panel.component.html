@@ -1,0 +1,41 @@
+<div class="header-wrapper">
+    <div class="left-content" *ngIf="isEdssSelected">
+        <button class="header-button">Add Virtual Caseload</button>
+        <input class="header-info-button" type="image" src="../../assets/images/information-icon.png" (click)="buttonclicked('infoMri')"
+            width="20px" height="20px">
+    </div>
+    <div class="right-content">
+        <a><img src="../../assets/images/nav-up-avs.PNG" width="50px" height="40px"></a>
+        <a><img src="../../assets/images/nav-up-second.PNG" width="50px" height="40px"></a>
+    </div>
+</div>
+<!-- <div>
+    <svg width="746" height="300">
+        <g id='control-panel'></g>
+        <g id="edss"></g>
+    </svg>
+</div>
+<div style="width:746px;height:400px;">
+    <svg id='medications' app-medications>
+    </svg>
+</div> -->
+
+<div id="graph-panel-wrapper">
+    <div id="graph-container" style="position:relative;">
+        <svg width="100%" [style.height.px]="graphSetting.panel.offsetHeight">
+            <g app-shared-grid [chartState]="state" id="shared-grid"></g>
+            <g app-edss [chartState]="state" id="edss"></g>
+        </svg>
+        <div app-medications [chartState]="state" id="medications-container" [style.top.px]="graphSetting.medications.positionTop"
+            [style.height.px]="graphSetting.medications.containerHeight" style="position:absolute;width:100%;overflow-y:auto;overflow-x:hidden;background-color:#FFF;border:1px solid #E7E7E7;padding-top:5px;">
+        </div>
+    </div>
+    <div id="graph-control">
+        <div id="undo" class="control-button" style="background-color: #e7d7f7">
+        </div>
+        <div id="zoom" class="control-button" style="background-color: #e1f4ff">
+        </div>
+        <div id="legend" class="control-button" style="background-color:#dff1a6">
+        </div>
+    </div>
+</div>

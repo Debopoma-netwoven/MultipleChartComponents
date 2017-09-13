@@ -1,0 +1,22 @@
+<template #edssSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">EDSS</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-6">Score</div>
+            <div class="col-xs-6">{{edssScoreDetail.score}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Reported By</div>
+            <div class="col-xs-6">{{edssScoreDetail.last_updated_provider_id}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Reported</div>
+            <div class="col-xs-6">{{edssScoreDetail.last_updated_instant}}</div>
+        </div>
+    </div>
+</template>
