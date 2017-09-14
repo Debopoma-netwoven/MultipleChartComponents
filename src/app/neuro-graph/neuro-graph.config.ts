@@ -231,5 +231,11 @@ export const GRAPH_SETTINGS = {
         chartHeight: 210,
         maxValueY: 9,
         color: "#EA700D"
+    },
+    relapses: {
+        positionTop: 180,
+        chartHeight: 100,
+        maxValueY: 9,
+        color: "red"
     }
 }

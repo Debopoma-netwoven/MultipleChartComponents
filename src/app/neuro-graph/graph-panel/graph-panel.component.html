@@ -24,6 +24,7 @@
     <div id="graph-container" style="position:relative;">
         <svg width="100%" [style.height.px]="graphSetting.panel.offsetHeight">
             <g app-shared-grid [chartState]="state" id="shared-grid"></g>
+            <g app-relapses [chartState]="state" id="relapses"></g>
             <g app-edss [chartState]="state" id="edss"></g>
         </svg>
         <div app-medications [chartState]="state" id="medications-container" [style.top.px]="graphSetting.medications.positionTop"

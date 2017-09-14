@@ -18,6 +18,7 @@ import { MedicationsComponent } from './graph-panel/medications/medications.comp
 import { CdsComponent } from './cds/cds.component';
 import { SharedGridComponent } from './graph-panel/shared-grid/shared-grid.component';
 import { EdssComponent } from './graph-panel/edss/edss.component';
+import { RelapsesComponent } from './graph-panel/relapses/relapses.component';
 
 export const ROUTES: Routes = [];
 @NgModule({
@@ -37,7 +38,8 @@ export const ROUTES: Routes = [];
     MedicationsComponent,
     CdsComponent,
     EdssComponent,
-    SharedGridComponent
+    SharedGridComponent,
+    RelapsesComponent
   ],
   exports: [NeuroGraphBoxComponent],
   providers: [BrokerService, NeuroGraphService]
