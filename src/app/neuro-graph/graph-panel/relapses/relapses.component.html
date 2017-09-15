@@ -8,14 +8,19 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-xs-3">Date</div>
+            <div class="col-xs-6">Date</div>
             <div class="col-xs-1">{{relapsesDetail.month}}</div>
             <div class="col-xs-3">{{relapsesDetail.year}}</div>
         </div>
         <div class="row">
-            <div class="col-xs-3">Clinician Confirmed</div>
-            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" [checked]="relapsesDetail.confirm" > </div>
-            <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" [checked]="!relapsesDetail.confirm"> </div>
+            <div class="col-xs-6"># of Relapses</div>
+            <div class="col-xs-6">{{relapsesDetail.relapse_cnt}}</div>
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-6">Clinician Confirmed</div>
+            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" disabled  value="Y" [checked]="relapsesDetail.confirm" > </div>
+            <div class="col-xs-1"> N <input type="checkbox" name="confirm" disabled  value="N" [checked]="!relapsesDetail.confirm"> </div>
         </div>
         
     </div>
@@ -30,13 +35,27 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-xs-3">Date</div>
-            <div class="col-xs-1">{{relapsesDetail.month}}</div>
-            <div class="col-xs-3">{{relapsesDetail.year}}</div>
+            <div class="col-xs-9">
+                <span>
+                <md-select  placeholder="monthSel" [(ngModel)]="relapsesDetail.month" style="padding-top:0px !important;margin-top:-15px !important;" floatPlaceholder="never">
+                    <md-option  *ngFor="let month of months" [value]="month">{{month}}</md-option>
+                  </md-select></span>
+                  <span>
+                  <md-select placeholder="yearSel" [(ngModel)]="relapsesDetail.year" style="padding-top:0px !important;margin-top:-15px !important;" floatPlaceholder="never">
+                        <md-option *ngFor="let year of years" [value]="year">{{year}}</md-option>
+                      </md-select></span>
+            </div>
+           
+        </div>
+        <div class="row" style="margin-top:6px;">
+            <div class="col-xs-6" ># of Relapses</div>
+            <div class="col-xs-6">{{relapsesDetail.relapse_cnt}}</div>
+            
         </div>
         <div class="row">
-            <div class="col-xs-3">Clinician Confirmed</div>
-            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" [checked]="relapsesDetail.confirm" > </div>
-            <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" [checked]="!relapsesDetail.confirm"> </div>
+            <div class="col-xs-6">Clinician Confirmed</div>
+            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" (change)="checkChge()" [checked]="relapsesDetail.confirm" > </div>
+            <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" (change)="checkChge()" [checked]="!relapsesDetail.confirm"> </div>
         </div>
         
     </div>

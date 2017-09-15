@@ -10,6 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MdDialogModule } from '@angular/material';
+import { MdSelectModule } from '@angular/material';
 import { GraphPanelComponent } from './graph-panel/graph-panel.component';
 import { NeuroRelatedComponent } from './neuro-related/neuro-related.component';
 import { PatientConcernsComponent } from './patient-concerns/patient-concerns.component';
@@ -21,7 +22,6 @@ import { CdsComponent } from './cds/cds.component';
 import { SharedGridComponent } from './graph-panel/shared-grid/shared-grid.component';
 import { EdssComponent } from './graph-panel/edss/edss.component';
 import { RelapsesComponent } from './graph-panel/relapses/relapses.component';
-//import {DialogComponent}  from './graph-panel/relapses/relapses.component';
 
 export const ROUTES: Routes = [];
 @NgModule({
@@ -32,8 +32,8 @@ export const ROUTES: Routes = [];
     PopoverModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
-    MdDialogModule
-    // ,BrowserAnimationsModule
+    MdDialogModule,
+    MdSelectModule
   ],
   declarations: [
     GraphPanelComponent,
@@ -44,10 +44,8 @@ export const ROUTES: Routes = [];
     CdsComponent,
     EdssComponent,
     SharedGridComponent,
-    RelapsesComponent
-    
+    RelapsesComponent  
   ],
-  //entryComponents: [ DialogComponent ],
   exports: [NeuroGraphBoxComponent],
   providers: [BrokerService, NeuroGraphService]
 })

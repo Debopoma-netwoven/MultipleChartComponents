@@ -24,6 +24,41 @@ export class RelapsesComponent implements OnInit {
   private width: number;
   private height: number;
   private yScale: any;
+ 
+  // private months = [
+  //   {value: 'Jan', viewValue: 'Jan'},
+  //   {value: 'Feb', viewValue: 'Feb'},
+  //   {value: 'Mar', viewValue: 'Mar'},
+  //   {value: 'Jan', viewValue: 'Apr'},
+  //   {value: 'Feb', viewValue: 'May'},
+  //   {value: 'Mar', viewValue: 'Jun'},
+  //   {value: 'Jan', viewValue: 'Jul'},
+  //   {value: 'Feb', viewValue: 'Aug'},
+  //   {value: 'Mar', viewValue: 'Sep'},
+  //   {value: 'Jan', viewValue: 'Oct'},
+  //   {value: 'Feb', viewValue: 'Nov'},
+  //   {value: 'Mar', viewValue: 'Dec'}
+  // ];
+
+  // private years = [
+  //   {value: '2017', viewValue: '2017'},
+  //   {value: '2016', viewValue: '2016'},
+  //   {value: '2015', viewValue: '2015'},
+  //   {value: '2014', viewValue: '2014'},
+  //   {value: '2013', viewValue: '2013'},
+  //   {value: '2012', viewValue: '2012'},
+  //   {value: '2011', viewValue: '2011'},
+  //   {value: '2010', viewValue: '2010'},
+  //   {value: '2009', viewValue: '2009'},
+  //   {value: '2008', viewValue: '2008'},
+  //   {value: '2007', viewValue: '2007'},
+  //   {value: '2006', viewValue: '2006'}
+  // ];
+  // private years =  Array.apply(2017, {length: 100}).map(function(value, index){
+  //   return index - 1;
+    private years = [];//Array().fill(1917,100,2017);//Array.apply(2017, Array(100)).map(function(value, index) { return index - 1; })
+  //[2017,1917];
+  private months = ['Jan', 'Feb', 'Mar', 'Apr','May', 'Jun', 'Jul', 'Aug','Sep', 'Oct', 'Nov', 'Dec'];
   //private modalRef: BsModalRef;
   private relapsesDetail: any;
   private subscriptions: any;
@@ -35,7 +70,8 @@ export class RelapsesComponent implements OnInit {
       "last_updated_instant": "08/31/2017 10:41:05",
       "save_csn": "865482572",
       "save_csn_status": "Open",
-      "clinician_confirm":"1"
+      "clinician_confirm":"1",
+      "relapse_cnt":"2"
     },
     {
       "score_id": "2",
@@ -44,7 +80,8 @@ export class RelapsesComponent implements OnInit {
       "last_updated_instant": "02/21/2017 10:41:05",
       "save_csn": "710119378",
       "save_csn_status": "Closed",
-      "clinician_confirm":"0"
+      "clinician_confirm":"0",
+      "relapse_cnt":""
     },
     {
       "score_id": "3",
@@ -53,7 +90,8 @@ export class RelapsesComponent implements OnInit {
       "last_updated_instant": "08/12/2016 10:41:05",
       "save_csn": "642945505",
       "save_csn_status": "Open",
-      "clinician_confirm":"0"
+      "clinician_confirm":"0",
+      "relapse_cnt":"2"
     },
     {
       "score_id": "4",
@@ -62,7 +100,8 @@ export class RelapsesComponent implements OnInit {
       "last_updated_instant": "01/05/2016 10:41:05",
       "save_csn": "584384988",
       "save_csn_status": "Closed",
-      "clinician_confirm":"1"
+      "clinician_confirm":"1",
+      "relapse_cnt":"1"
     }
   ];
   private relapsesData: Array<any>;
@@ -75,7 +114,10 @@ export class RelapsesComponent implements OnInit {
      
      }
   ngOnInit() {
-    
+    for(var i=2017;i>=1917;i--)
+    {
+      this.years.push(i.toString());
+    }
     console.log('relapses ngOnInit');
     this.subscriptions = this
       .brokerService
@@ -139,13 +181,20 @@ export class RelapsesComponent implements OnInit {
    
   else{
   
-    let dialogRef = this.dialog.open(this.relapsesEditSecondLevelTemplate);
+    let dialogRef = this.dialog.open(this.relapsesEditSecondLevelTemplate,{width:"425px"});
   }
     
   }
-  // closeDialog() {
-  //   this.dialog.closeAll();
-  // }
+  checkChge(obj){
+    //debugger;
+    if(this.relapsesDetail.confirm ==1)
+    {
+      this.relapsesDetail.confirm =0;
+    }
+    else{
+      this.relapsesDetail.confirm =1;
+    }
+  }
   createChart() {
     let dataset = this.relapsesData.map(d => {
       return {
