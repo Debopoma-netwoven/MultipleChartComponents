@@ -1,1 +1,43 @@
 
+<template #relapsesSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Relapse</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="dialog.closeAll()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-3">Date</div>
+            <div class="col-xs-1">{{relapsesDetail.month}}</div>
+            <div class="col-xs-3">{{relapsesDetail.year}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Clinician Confirmed</div>
+            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" [checked]="relapsesDetail.confirm" > </div>
+            <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" [checked]="!relapsesDetail.confirm"> </div>
+        </div>
+        
+    </div>
+</template>
+<template #relapsesEditSecondLevelTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Relapse</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="dialog.closeAll()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-3">Date</div>
+            <div class="col-xs-1">{{relapsesDetail.month}}</div>
+            <div class="col-xs-3">{{relapsesDetail.year}}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Clinician Confirmed</div>
+            <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" [checked]="relapsesDetail.confirm" > </div>
+            <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" [checked]="!relapsesDetail.confirm"> </div>
+        </div>
+        
+    </div>
+</template>

@@ -1,22 +1,31 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation,ViewChild,TemplateRef,Inject } from '@angular/core';
 import * as d3 from 'd3';
 import { GRAPH_SETTINGS } from '../../neuro-graph.config';
 import { BrokerService } from '../../../fire-base/broker.service';
 import { allMessages, allHttpMessages, medication } from '../../neuro-graph.config';
+//import { BsModalService } from 'ngx-bootstrap/modal';
+//import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import * as moment from 'moment';
+
+import {MdDialog,MdDialogRef,MD_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: '[app-relapses]',
   templateUrl: './relapses.component.html',
-  styleUrls: ['./relapses.component.css'],
+  styleUrls: ['./relapses.component.sass'],
   encapsulation: ViewEncapsulation.None
 })
 export class RelapsesComponent implements OnInit {
+  @ViewChild('relapsesSecondLevelTemplate') private relapsesSecondLevelTemplate: TemplateRef<any>;
+  @ViewChild('relapsesEditSecondLevelTemplate') private relapsesEditSecondLevelTemplate: TemplateRef<any>;
+  
   @Input() private chartState: any;
   private yDomain: Array<number> = [0, GRAPH_SETTINGS.edss.maxValueY];
   private width: number;
   private height: number;
   private yScale: any;
-  private edssScoreDetail: any;
+  //private modalRef: BsModalRef;
+  private relapsesDetail: any;
   private subscriptions: any;
   private datasetA: Array<any> =[
     {
@@ -56,12 +65,18 @@ export class RelapsesComponent implements OnInit {
       "clinician_confirm":"1"
     }
   ];
-  private edssData: Array<any>;
-  constructor(private brokerService: BrokerService) { }
-
+  private relapsesData: Array<any>;
+  // constructor(private brokerService: BrokerService, private modalService: BsModalService,public dialog: MdDialog)
+  //  {
+    
+  //   }
+    constructor(private brokerService: BrokerService,public dialog: MdDialog)
+    {
+     
+     }
   ngOnInit() {
     
-    console.log('edss ngOnInit');
+    console.log('relapses ngOnInit');
     this.subscriptions = this
       .brokerService
       .filterOn(allHttpMessages.httpGetEdss)
@@ -69,36 +84,37 @@ export class RelapsesComponent implements OnInit {
         d.error
           ? console.log(d.error)
           : (() => {
-            this.edssData = d.data.edss_scores;
-            this.createChart();
+            this.relapsesData = d.data.edss_scores;
+            //this.createChart();
           })();
       })
-    let edss = this
+    let relapses = this
       .brokerService
       .filterOn(allMessages.neuroRelated)
-      .filter(t => (t.data.artifact == 'edss'));
-
-    let sub1 = edss
+      .filter(t => (t.data.artifact == 'relapses'));
+//debugger;
+    let sub1 = relapses
       .filter(t => t.data.checked)
       .subscribe(d => {
         d.error
           ? console.log(d.error)
           : (() => {
             console.log(d.data);
+            this.createChart();
             //make api call
             this
               .brokerService
               .httpGet(allHttpMessages.httpGetEdss);
           })();
       });
-    let sub2 = edss
+    let sub2 = relapses
       .filter(t => !t.data.checked)
       .subscribe(d => {
         d.error
           ? console.log(d.error)
           : (() => {
             console.log(d.data);
-            //this.removeChart();
+            this.removeChart();
           })();
       })
     this
@@ -106,12 +122,37 @@ export class RelapsesComponent implements OnInit {
       .add(sub1)
       .add(sub2);
   }
+  removeChart() {
+    d3.select('#relapses').selectAll("*").remove();
+  }
+  
+  showSecondLevel(data) {
+    console.log(data);
+    //debugger;
+    let config = { backdrop: false, class: 'otherMedsSecondLevel' };
+    this.relapsesDetail = data;
+    if(data.save_csn_status =="Open")
+    {
+      //this.modalRef = this.modalService.show(this.relapsesSecondLevelTemplate)
+      let dialogRef = this.dialog.open(this.relapsesSecondLevelTemplate);
+    }
+   
+  else{
+  
+    let dialogRef = this.dialog.open(this.relapsesEditSecondLevelTemplate);
+  }
+    
+  }
+  // closeDialog() {
+  //   this.dialog.closeAll();
+  // }
   createChart() {
-    let dataset = this.edssData.map(d => {
+    let dataset = this.relapsesData.map(d => {
       return {
         ...d,
         lastUpdatedDate: Date.parse(d.last_updated_instant),
         scoreValue: parseFloat(d.score)
+        
       }
     }).sort((a, b) => a.lastUpdatedDate - b.lastUpdatedDate);
 
@@ -120,7 +161,10 @@ export class RelapsesComponent implements OnInit {
         ...d,
         lastUpdatedDate: Date.parse(d.last_updated_instant),
         scoreValue: parseFloat(d.score),
-        confirm: parseInt(d.clinician_confirm)
+        confirm: parseInt(d.clinician_confirm),
+        month:moment(d.last_updated_instant).format('MMM'),
+        year:moment(d.last_updated_instant).format('YYYY')
+       
       }
     }).sort((a, b) => a.lastUpdatedDate - b.lastUpdatedDate);
 
@@ -151,8 +195,10 @@ export class RelapsesComponent implements OnInit {
         { "lastUpdatedDate": this.chartState.xDomain.defaultMaxValue, "scoreValue": 2.0 }
       ])
       .attr("class", "lineA")
-      .attr("d", lineA);
-
+      .attr("d", lineA)
+      .attr("stroke","red")
+      .attr("stroke-width","1.5")
+      .attr("fill","none");
 
     let arc = d3.symbol().type(d3.symbolTriangle).size(100);
    svg.selectAll(".dotA")
@@ -169,7 +215,11 @@ export class RelapsesComponent implements OnInit {
       .style("fill", d => {return d.confirm?'red':'#fff';
         
       })
-
+      .on('click', d => {
+        this.showSecondLevel(d);
+      })
 
   }
 }
+
+
