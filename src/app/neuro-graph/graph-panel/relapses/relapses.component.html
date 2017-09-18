@@ -1,6 +1,6 @@
 
 <template #relapsesSecondLevelTemplate>
-    <div class="modal-header">
+    <div class="modal-header" style="padding: 0 !important;">
         <h4 class="modal-title pull-left">Relapse</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="dialog.closeAll()">
                 <span aria-hidden="true">&times;</span>
@@ -26,7 +26,7 @@
     </div>
 </template>
 <template #relapsesEditSecondLevelTemplate>
-    <div class="modal-header">
+    <div class="modal-header" style="padding: 0 !important;">
         <h4 class="modal-title pull-left">Relapse</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="dialog.closeAll()">
                 <span aria-hidden="true">&times;</span>
@@ -56,6 +56,9 @@
             <div class="col-xs-6">Clinician Confirmed</div>
             <div class="col-xs-1" > Y <input type="checkbox" name="confirm" value="Y" (change)="checkChge()" [checked]="relapsesDetail.confirm" > </div>
             <div class="col-xs-1"> N <input type="checkbox" name="confirm" value="N" (change)="checkChge()" [checked]="!relapsesDetail.confirm"> </div>
+            <div class="col-xs-1" > Y <md-checkbox name="confirm" value="Y" checked="{{relapsesDetail.confirm}}" ></md-checkbox> </div>
+            <div class="col-xs-1"> N <md-checkbox name="confirm" value="N" checked="{{(relapsesDetail.noconfirm)}}"></md-checkbox> </div>
+
         </div>
         
     </div>

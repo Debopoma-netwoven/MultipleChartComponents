@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MdDialogModule } from '@angular/material';
 import { MdSelectModule } from '@angular/material';
+import {MdCheckboxModule} from '@angular/material';
 import { GraphPanelComponent } from './graph-panel/graph-panel.component';
 import { NeuroRelatedComponent } from './neuro-related/neuro-related.component';
 import { PatientConcernsComponent } from './patient-concerns/patient-concerns.component';
@@ -33,7 +34,8 @@ export const ROUTES: Routes = [];
     ModalModule.forRoot(),
     BrowserAnimationsModule,
     MdDialogModule,
-    MdSelectModule
+    MdSelectModule,
+    MdCheckboxModule
   ],
   declarations: [
     GraphPanelComponent,

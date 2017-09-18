@@ -212,7 +212,8 @@ export class RelapsesComponent implements OnInit {
         scoreValue: parseFloat(d.score),
         confirm: parseInt(d.clinician_confirm),
         month:moment(d.last_updated_instant).format('MMM'),
-        year:moment(d.last_updated_instant).format('YYYY')
+        year:moment(d.last_updated_instant).format('YYYY'),
+        noconfirm: !parseInt(d.clinician_confirm)
        
       }
     }).sort((a, b) => a.lastUpdatedDate - b.lastUpdatedDate);
